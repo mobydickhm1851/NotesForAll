@@ -21,3 +21,11 @@
   ```
   Note the line `<rosparam file="$(find 2dnav_pr2)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />`
   , with the `ns="global_costmap"`, parameter in _costmap_common_params.yaml_ will have the name of __move_base/global_costmap/parameter_name__ .
+  <br/>See [ros wiki page for more info][1].
+  
+  
+  
+  
+  
+  
+  [1]:http://wiki.ros.org/ROS/Tutorials/Roslaunch%20tips%20for%20larger%20projects
