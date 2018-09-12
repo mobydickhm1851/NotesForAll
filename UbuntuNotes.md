@@ -1,7 +1,7 @@
 # Ubuntu(Linux) Notes
 ### Bluetooth Device Connection
 - Connect from `bluetoothctl`
-  This is modified from this [post][1]
+  This is modified from [ArchWiki Bluetooth][1] and [ArchWiki Bluetooth Headset][2].
   ```
   # bluetoothctl
   ```
@@ -31,7 +31,17 @@
   ```
   > If everything works correctly, you now have a separate output device in PulseAudio. Note: The device may be off by default. Select its audio profile (OFF, A2DP, HFP) in the "Configuration" tab of pavucontrol.
     You can now redirect any audio through that device using the "Playback" and "Recording" tabs of pavucontrol.
- 
+  
+  If you trust the device and want it to be connected automatically(whenever your device is on), open `/etc/bluetooth/main.conf` with vim, edit the following line:
+  ```
+  [Poicy]
+  AutoEnable = true
+  ```
+  Then go back to `bluetoothctl` enter this line:
+  ```
+  trust 00:1D:43:6D:03:26
+  ```
+  
   You can now disable scanning again and exit the program:
   ```
   # scan off
@@ -42,4 +52,5 @@
   
   
   
-  [1]:https://askubuntu.com/questions/763939/bluetoothctl-what-is-a-bluetooth-agent
+  [1]:https://wiki.archlinux.org/index.php/bluetooth
+  [2]:https://wiki.archlinux.org/index.php/Bluetooth_headset
