@@ -1,5 +1,12 @@
 # ROS NOTE     
 ###### Sep 2018 LiuYC at SOLab
+
+## ROS Package 
+### ROS Package Installation
+ - If after installation (sudo apt-get install-<distro>-package-name or from source) but the package can't be found:
+   - make sure to source `/path/to/catkin_ws/devel/setup.bash` again (you'll have to do this after every package addition / removal)
+   - run `__rospack profile__` to force an update of the package cache that roscd uses
+
 ## ROS Launch Files
 ### __Using of namespace__
   The following launch node is in __move_base__ navigation package.
