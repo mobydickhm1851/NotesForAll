@@ -15,7 +15,7 @@
    8. Restart your PC once more and this time it will boot up normally but with AHCI mode activated.
    9. Bask in the reflected glory of being a total Windows 10 God 
   ```
-  source : see [this][3]
+  source : see [this][3] and [this][4]
   
   ### Install install.sh files
   - Use `bash` command
@@ -93,3 +93,4 @@
   [1]:https://wiki.archlinux.org/index.php/bluetooth
   [2]:https://wiki.archlinux.org/index.php/Bluetooth_headset
   [3]:https://www.tenforums.com/drivers-hardware/15006-attn-ssd-owners-enabling-ahci-mode-after-windows-10-installation-5.html
+  [4]:https://askubuntu.com/questions/696413/ubuntu-installer-cant-find-any-disk-on-dell-xps-13-9350
