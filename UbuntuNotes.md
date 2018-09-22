@@ -1,6 +1,29 @@
 # Ubuntu(Linux) Notes
-### Bluetooth Device Connection
-- Connect from `bluetoothctl`
+
+## Install bash
+  
+  ### Install install.sh files
+  - Use `bash` command
+  ```
+  sudo bash install.sh
+  ```
+  - Make the file executable
+  ```
+  chmod +x install.sh
+  sudo ./install.sh
+  ```
+  
+  ### Yes to all during the installation
+  ```
+  yes "yes" | script.sh
+  ```
+  This can also work removing files or other command with Y/N
+  ```
+  yes "yes" | rm -i file1 file2 file3
+  ```
+
+## Bluetooth Device Connection
+  ### Connect from `bluetoothctl`
   This is modified from [ArchWiki Bluetooth][1] and [ArchWiki Bluetooth Headset][2].
   ```
   # bluetoothctl
