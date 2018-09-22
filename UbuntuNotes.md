@@ -2,6 +2,21 @@
 
 ## Install bash
   
+  ### Dual system installation
+  - Win10/Ubunt16.04 Installation fail doing manual partition : can't find any disks
+  ```
+   1. Run Command Prompt as Admin
+   2. Invoke a Safe Mode boot with the command: bcdedit /set {current} safeboot minimal
+   3. Restart the PC and enter your BIOS during bootup.
+   4. Change from IDE to AHCI mode then Save & Exit.
+   5. Windows 10 will launch in Safe Mode.
+   6. Right click the Window icon and select to run the Command Prompt in Admin mode from among the various options.
+   7. Cancel Safe Mode booting with the command: bcdedit /deletevalue {current} safeboot
+   8. Restart your PC once more and this time it will boot up normally but with AHCI mode activated.
+   9. Bask in the reflected glory of being a total Windows 10 God 
+  ```
+  source : see [this][3]
+  
   ### Install install.sh files
   - Use `bash` command
   ```
@@ -77,3 +92,4 @@
   
   [1]:https://wiki.archlinux.org/index.php/bluetooth
   [2]:https://wiki.archlinux.org/index.php/Bluetooth_headset
+  [3]:https://www.tenforums.com/drivers-hardware/15006-attn-ssd-owners-enabling-ahci-mode-after-windows-10-installation-5.html
