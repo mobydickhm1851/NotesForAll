@@ -16,10 +16,15 @@ and also use column type `c` instead of `l`, If you want more horizontal space b
     
 ref:[Column and row padding in tables][spacing]
   
-  
-  
+### Tables not centering
+   Sometimes if the table is too wide `\centering` or `\begin{center}` won't work, so we have to move table to the left manually.
+   ```
+   \hspace*{-2cm}
+   ```
+  See this [answer][center] for more solution (like `\makebox`)
 
 
 
 
 [spacing]:https://tex.stackexchange.com/questions/31672/column-and-row-padding-in-tables
+[center]:https://tex.stackexchange.com/questions/4926/table-will-not-center-and-it-is-spilling-off-the-right-side-of-the-page
