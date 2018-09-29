@@ -8,7 +8,7 @@
    - run `__rospack profile__` to force an update of the package cache that roscd uses
 
 ## ROS Launch Files
-### __Using of namespace__
+### __Use of namespace__
   The following launch node is in __move_base__ navigation package.
   ```
   <node pkg="move_base" type="move_base" name="move_base" machine="c2">
