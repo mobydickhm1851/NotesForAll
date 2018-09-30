@@ -15,7 +15,8 @@
 and also use column type `c` instead of `l`, If you want more horizontal space between the columns then use `\setlength\tabcolsep{<whatever length>}`
     
 ref:[Column and row padding in tables][spacing]
-  
+
+## Centering issue
 ### Tables not centering
    Sometimes if the table is too wide `\centering` or `\begin{center}` won't work, so we have to move table to the left manually.
    ```
@@ -23,7 +24,17 @@ ref:[Column and row padding in tables][spacing]
    ```
   See this [answer][center] for more solution (like `\makebox`)
 
-
+### Caption not centering
+   Use caption package
+    ```
+    \usepackage{caption} 
+    ```
+   And set desiered arrangements, for examples:
+   ```
+   \captionsetup{justification=centering}
+    or
+   \captionsetup{justification=centering,margin=2cm}
+   ```
 
 
 [spacing]:https://tex.stackexchange.com/questions/31672/column-and-row-padding-in-tables
