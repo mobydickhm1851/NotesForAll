@@ -86,11 +86,37 @@
   # exit
   ```
   
-  
-  
+ ## SSH settings
+ ### ssh login without passwords
+ __On machine A:__ (client)
+ <br\>Generate the rsa-key, for any pup-up question, just press `enter`
+ ```
+ ssh-keygen
+ ```
+ then use `vim` to get the `id_ras`
+ ```
+ vim id_ras.pub
+ ```
+ __On machine B:__ (server)
+ <br\>create a file called `authorized_keys`
+ ```
+ touch authorized_keys
+ ```
+ then paste the id_ras of machine A into this file
+ 
+ __Faster version__
+ ```
+ ssh-keygen -t rsa
+ scp id_rsa.pub server_hostname:~/.ssh/
+ ssh server_hostname
+ cat .ssh/id_rsa.pub >> .ssh/authorized_keys
+ ```
+ to get more info, check out [this][ssh_1] and [this][ssh_2]
   
   
   [1]:https://wiki.archlinux.org/index.php/bluetooth
   [2]:https://wiki.archlinux.org/index.php/Bluetooth_headset
   [3]:https://www.tenforums.com/drivers-hardware/15006-attn-ssd-owners-enabling-ahci-mode-after-windows-10-installation-5.html
+  [ssh_1]:http://www.linuxproblem.org/art_9.html
+  [ssh_2]:https://blog.longwin.com.tw/2005/12/ssh_keygen_no_passwd/
   [4]:https://askubuntu.com/questions/696413/ubuntu-installer-cant-find-any-disk-on-dell-xps-13-9350
