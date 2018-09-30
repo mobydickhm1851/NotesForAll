@@ -24,7 +24,7 @@ ref:[Column and row padding in tables][spacing]
    ```
   See this [answer][center] for more solution (like `\makebox`)
 
-### Caption not centering
+### Caption not centering 
    Use caption package
     ```
     \usepackage{caption} 
@@ -35,7 +35,8 @@ ref:[Column and row padding in tables][spacing]
     or
    \captionsetup{justification=centering,margin=2cm}
    ```
-
+   [Answers is here][1]
 
 [spacing]:https://tex.stackexchange.com/questions/31672/column-and-row-padding-in-tables
 [center]:https://tex.stackexchange.com/questions/4926/table-will-not-center-and-it-is-spilling-off-the-right-side-of-the-page
+[1]:https://tex.stackexchange.com/questions/95207/how-to-center-a-specific-caption
