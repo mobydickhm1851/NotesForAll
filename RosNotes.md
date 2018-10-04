@@ -5,7 +5,7 @@
 ### ROS Package Installation
  - If after installation (sudo apt-get install-<distro>-package-name or from source) but the package can't be found:
    - make sure to source `/path/to/catkin_ws/devel/setup.bash` again (you'll have to do this after every package addition / removal)
-   - run `__rospack profile__` to force an update of the package cache that roscd uses
+   - run __`rospack profile`__ to force an update of the package cache that roscd uses
 
 ## ROS Launch Files
 ### __Use of namespace__
