@@ -1,5 +1,21 @@
 # Ubuntu(Linux) Notes
 
+## Trouble shooting
+  
+  ### Can't shutdown or reboot properly
+  - Ubuntu 16.04 hangs on shutdown/restart, requires pressing and holding the power key to turn the machine off.
+  <br/> Try this : 
+     1. Go to `/etc/default/grub`
+     2. Edit this line:
+        ```
+        GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+        ```
+     3. To this line:
+        ```
+        GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi=force"
+        ```
+     4. Then run `update-grub` 
+
 ## Install bash
   
   ### Dual system installation
