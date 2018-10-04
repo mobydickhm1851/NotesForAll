@@ -4,7 +4,7 @@
   
   ### Can't shutdown or reboot properly
   - Ubuntu 16.04 hangs on shutdown/restart, requires pressing and holding the power key to turn the machine off.
-  <br/> Try this : 
+   <br/> Try [this][5]:
      1. Go to `/etc/default/grub`
      2. Edit this line:
         ```
@@ -15,7 +15,13 @@
         GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi=force"
         ```
      4. Then run `update-grub` 
-
+   
+    
+  <br/> __However, for my Dell-XPS15 the problem was fixed by [this solution][6].__
+        
+     the problem was caused by drivers: I managed to install the NVIDIA drivers from terminal 
+     usingsudo ubuntu-drivers autoinstall 
+         
 ## Install bash
   
   ### Dual system installation
@@ -136,3 +142,5 @@
   [ssh_1]:http://www.linuxproblem.org/art_9.html
   [ssh_2]:https://blog.longwin.com.tw/2005/12/ssh_keygen_no_passwd/
   [4]:https://askubuntu.com/questions/696413/ubuntu-installer-cant-find-any-disk-on-dell-xps-13-9350
+  [5]:https://askubuntu.com/questions/764568/ubuntu-16-04-hangs-on-shutdown-restart
+  [6]:https://askubuntu.com/questions/882410/ubuntu-16-10-wont-shutdown
