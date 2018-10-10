@@ -20,7 +20,15 @@
   <br/> __However, for my Dell-XPS15 the problem was fixed by [this solution][6].__
         
      the problem was caused by drivers: I managed to install the NVIDIA drivers from terminal 
-     usingsudo ubuntu-drivers autoinstall 
+     usingsudo ubuntu-drivers autoinstall er
+  <br/> After `sudo ubuntu-drivers autoinstall`, this __Warning__ poped up:
+     
+     W: Possible missing firmware /lib/firmware/i915/kbl_guc_ver9_14.bin for module i915
+     W: Possible missing firmware /lib/firmware/i915/bxt_guc_ver8_7.bin for module i915re 
+     
+   This [__answer__][7] right here should help!
+     
+  
          
 ## Install bash
   
@@ -144,3 +152,4 @@
   [4]:https://askubuntu.com/questions/696413/ubuntu-installer-cant-find-any-disk-on-dell-xps-13-9350
   [5]:https://askubuntu.com/questions/764568/ubuntu-16-04-hangs-on-shutdown-restart
   [6]:https://askubuntu.com/questions/882410/ubuntu-16-10-wont-shutdown
+  [7]:https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-missing-firmware-warnings
