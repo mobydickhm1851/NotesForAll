@@ -49,7 +49,30 @@
  [8]:https://devtalk.nvidia.com/default/topic/1017185/linux/problem-with-resume-from-suspend-ubuntu-16-04-gt-940mx-/1
  [9]:https://devtalk.nvidia.com/default/topic/969433/-quot-solved-quot-suspend-resuming-and-wakeup-with-nvidia370-28/
         
-         
+
+## Backup linux 
+### Generate the backup file
+It's easy to do the backup on linux
+  ```  
+   tar cvpzf backup.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
+  ```
+The last `/` means what (where) do you want to back up. And if you don't want to compress it then it will just be a __tar__ rather than a __tar ball__.
+<br/> And the following table is what they stands for:
+
+  | arguments | meaning |
+  | :---: | :---: |
+  | 'c' | create or overwrite |
+  | 'v' | verbose, letting you know what's going on on terminal |
+  | 'p' | preserving permissions for all the files |
+  | 'z' | compression the file (not like windows, nothing bad would happen) |
+  | 'f' | allow to set file names for the backup |
+
+### Recover from the backup file
+
+
+
+[tar]:https://www.youtube.com/watch?v=hGqjM9Wz-pU
+
          
 ## Install bash
   
