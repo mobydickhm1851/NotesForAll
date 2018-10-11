@@ -28,7 +28,28 @@
      
    This [__answer__][7] right here should help!
      
+  ### Can't suspend (XPS-15)
+  After installing the NVIDIA driver, the shutdown and reboot problem were solved. But now the problem is unable to wake from suspend. The problem is the same as [__this discusss__][8] on NVIDIA webpage. The problem seems to be caused by Intel pci-bridge and there is no proper solution so far. <br/>
+  <br/> However, the problem of unable to hibernate is solved on [__this post__] (this post doesn't solve the suspend though). So what I did is change all the suspend command into hibernate, like when closing the lid or inactivate for some time.Here is how to do it:
+  <br/> Edit this file
+  ```
+  /etc/systemd/logind.conf  
+  ```
+  <br/> __Remove the `#`__ and change the lines into this
+  ```
+  HandleLidSwitch=hibernate
+  HandleSuspendKey=hibernate
+  ```
+   <br/> We can also use hybrid-sleep instead of hibernate. With faster waking time, the hybrid-sleep will consum more energy though.
   
+         
+         
+ [6]:https://askubuntu.com/questions/882410/ubuntu-16-10-wont-shutdown
+ [7]:https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-missing-firmware-warnings
+ [8]:https://devtalk.nvidia.com/default/topic/1017185/linux/problem-with-resume-from-suspend-ubuntu-16-04-gt-940mx-/1
+ [9]:https://devtalk.nvidia.com/default/topic/969433/-quot-solved-quot-suspend-resuming-and-wakeup-with-nvidia370-28/
+        
+         
          
 ## Install bash
   
@@ -151,5 +172,4 @@
   [ssh_2]:https://blog.longwin.com.tw/2005/12/ssh_keygen_no_passwd/
   [4]:https://askubuntu.com/questions/696413/ubuntu-installer-cant-find-any-disk-on-dell-xps-13-9350
   [5]:https://askubuntu.com/questions/764568/ubuntu-16-04-hangs-on-shutdown-restart
-  [6]:https://askubuntu.com/questions/882410/ubuntu-16-10-wont-shutdown
-  [7]:https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-missing-firmware-warnings
+  
