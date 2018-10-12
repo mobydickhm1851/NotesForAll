@@ -2,6 +2,10 @@
 
 ## Trouble shooting
   
+ 
+ 
+ [cometothis](#backup_linux)
+   
   ### Can't shutdown or reboot properly
   - Ubuntu 16.04 hangs on shutdown/restart, requires pressing and holding the power key to turn the machine off.
    <br/> Try [this][5]:
