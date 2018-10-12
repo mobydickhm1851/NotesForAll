@@ -1,11 +1,24 @@
 # Ubuntu(Linux) Notes
 
+## Contents
+- [Trouble shooting](#trouble-shooting)
+   - [Can't shutdown or reboot properly](#can't-shutdown-or-reboot-properly)
+   - [Can't suspend](#can't-suspend(xps-15))
+- [Backup linux](#backup-linux)
+   - [Generate the backup file](#generate-the-backup-file)
+   - [Recover from the backup file](#recover-from-the-backup-file)
+- [Install bash](#install-bash)
+   - [Dual system installation](#dual-system-installation)
+   - [Install install .sh files](#install-install-.sh-files)
+   - [Yes to all during the installation](#yes-to-all-during-the-installation)
+- [Bluetooth device connection](#bluetooth-device-connection)
+   - [Connect from `bluetoothctl`](#connect-from-`bluetoothctl`)
+- [SSH settings](#ssh-settings)
+   - [ssh login without passwords](#ssh-login-without-passwords)
+
+
 ## Trouble shooting
-  
- 
- 
- [cometothis](#backup_linux)
-   
+      
   ### Can't shutdown or reboot properly
   - Ubuntu 16.04 hangs on shutdown/restart, requires pressing and holding the power key to turn the machine off.
    <br/> Try [this][5]:
@@ -95,7 +108,7 @@ The last `/` means what (where) do you want to back up. And if you don't want to
   ```
   source : see [this][3] and [this][4]
   
-  ### Install install.sh files
+  ### Install install .sh files
   - Use `bash` command
   ```
   sudo bash install.sh
@@ -115,7 +128,7 @@ The last `/` means what (where) do you want to back up. And if you don't want to
   yes "yes" | rm -i file1 file2 file3
   ```
 
-## Bluetooth Device Connection
+## Bluetooth device connection
   ### Connect from `bluetoothctl`
   This is modified from [ArchWiki Bluetooth][1] and [ArchWiki Bluetooth Headset][2].
   ```
