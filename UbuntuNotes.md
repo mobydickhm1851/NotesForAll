@@ -71,22 +71,60 @@
 ### Generate the backup file
 It's easy to do the backup on linux
   ```  
-   tar cvpzf backup.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
+   tar -cvpzf backup.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
   ```
 The last `/` means what (where) do you want to back up. And if you don't want to compress it then it will just be a __tar__ rather than a __tar ball__.
 <br/> And the following table is what they stands for:
 
   | arguments | meaning |
   | :---: | :---: |
-  | 'c' | create or overwrite |
+  | 'c' | create new file (overwrites old file) |
   | 'v' | verbose, letting you know what's going on on terminal |
   | 'p' | preserving permissions for all the files |
   | 'z' | compression the file (not like windows, nothing bad would happen) |
   | 'f' | allow to set file names for the backup |
 
 ### Recover from the backup file
+  
+  ```  
+   sudo tar -xvpzf TARFILE -C /RECOVERY_DIRECTORY
+  ```
+After the __capital C__ is the directory where you want to extract this tar-ball to.
+
+  | arguments | meaning |
+  | :----: | :---: |
+  | 'x' | extract the tar file |
+  | 'C' | this argument (in capital) is behind the tar file, <br/> to extract in different directory |
 
 
+### Using Cron Job to make backups automatically
+
+To edit the Crontab file:
+  
+  ```
+  sudo crontab -e
+  ```
+  | arguments | meaning |
+  | :---: | :---: |
+  | 'e' | edit the  current  crontab  using  the  editor specified |
+  | 'r' | causes the current crontab to be removed |
+  | 'l' | causes the current crontab to be displayed on standard output |
+ 
+You will be asked to choose an editor upon editing for the first time.
+<br/> The format would be : 
+
+  ```
+  minute (0-59), hour (0-23, 0 = midnight), day (1-31), month (1-12), weekday (0-6, 0 = Sunday), command
+  ```
+  
+Examples:
+
+  ```
+  # m h  dom mon dow   command
+  # backup every day at 10:30
+  30 10 * * * sudo tar -cpzf /home/liuyc/backupfolder/backup_moby.tar.gz /home/liuyc/moby_*
+  ```
+source vedio:[check this out !][tar]
 
 [tar]:https://www.youtube.com/watch?v=hGqjM9Wz-pU
 
