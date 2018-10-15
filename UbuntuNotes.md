@@ -7,6 +7,8 @@
 - [Backup linux](#backup-linux)
    - [Generate the backup file](#generate-the-backup-file)
    - [Recover from the backup file](#recover-from-the-backup-file)
+   - [Using Cron Job to make backups automatically](#using-cron-job-to-make-backups-automatically)
+   - [Upload to Google Drive](#upload-to-google-drive)
 - [Install bash](#install-bash)
    - [Dual system installation](#dual-system-installation)
    - [Install install .sh files](#install-install-.sh-files)
@@ -128,7 +130,32 @@ source vedio:[check this out !][tar]
 
 [tar]:https://www.youtube.com/watch?v=hGqjM9Wz-pU
 
-         
+### Upload to Google Drive
+#### Install gdrive
+```
+sudo wget -O /usr/bin/gdrive "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download"
+sudo chmod +x /usr/bin/gdrive
+```
+After the installation, use `gdrive about` to authorize __gdrive__ your account. (*remove the `~/.gdrive`  if not using for security purpose*)
+
+#### Upload using gdrive
+1. First use `gdrive list` to get the __ID__ for the directory you want to upload to.
+2. Using this command to upload, add to a bash file for crontab to execute:
+   ```
+   #!/bin/bash   PATH=/opt/ros/kinetic/bin:/home/liuyc/bin:/home/liuyc/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+   sudo gdrive upload --parent --recursive 1hFb8GS0UvYFgUGBbywHszF0eTVjVWL-l "/home/liuyc/backupfolder"
+   ```
+   Using `--recursive` to upload a directory. Add `PATH` at the begining to add `gdrive` in path. (See this [discussion][gdrive_dis]) 
+   
+Add this line to `sudo crontab -e` to upload automatically:
+```
+25 10 * * * sudo /home/liuyc/backupfolder/upload_gdrive.sh
+```
+For more usage of `gdrive`, check [original github repo][gdrive_repo].
+
+[gdrive_repo]:https://github.com/prasmussen/gdrive
+[gdrive_dis]:https://github.com/prasmussen/gdrive/issues/151
+
 ## Install bash
   
   ### Dual system installation
