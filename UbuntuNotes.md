@@ -15,6 +15,7 @@
    - [Yes to all during the installation](#yes-to-all-during-the-installation)
 - [Bluetooth device connection](#bluetooth-device-connection)
    - [Connect from `bluetoothctl`](#connect-from-`bluetoothctl`)
+   - [Logitech Anywhere 2S can't connect with bluetooth](#logitech-anywhere-2s-can't-connect-with-bluetooth)
 - [SSH settings](#ssh-settings)
    - [ssh login without passwords](#ssh-login-without-passwords)
 
@@ -240,9 +241,33 @@ For more usage of `gdrive`, check [original github repo][gdrive_repo].
   ```
   # scan off
   # exit
-  ```
-  
- ## SSH settings
+```
+### Logitech Anywhere 2S can't connect with bluetooth
+Use `bluetoothctl` to start the setting.
+</br> Then try this
+```
+[bluetooth]# power off
+[bluetooth]# power on
+[bluetooth]# scan on
+[bluetooth]# connect XX:XX:XX:XX:XX:XX
+[Arc Touch Mouse SE]# trust
+[Arc Touch Mouse SE]# connect XX:XX:XX:XX:XX:XX
+[Arc Touch Mouse SE]# pair
+[Arc Touch Mouse SE]# unblock
+[Arc Touch Mouse SE]# power off
+[bluetooth]# power on
+```
+It should work after this. If the error shows: `No default controller available`, you can check if anything is wrong by `systemctl status bluetooth`.Then try:
+```
+sudo systemctl start bluetooth
+```
+
+(check these pages for more detail:[connect to anywhere 2s][anywheresolver], [solving no_controller][bluetooth])
+
+[anywheresolver]:https://askubuntu.com/questions/741330/how-do-i-get-logitech-mx-anywhere-2-to-work-in-16-04-bluetooth-smart
+[bluetooth]:https://forums.bunsenlabs.org/viewtopic.php?id=4375
+
+## SSH settings
  ### ssh login without passwords
  __On machine A:__ (client)
  <br\>Generate the rsa-key, for any pup-up question, just press `enter`
