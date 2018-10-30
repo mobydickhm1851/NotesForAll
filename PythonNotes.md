@@ -9,7 +9,7 @@
 
    
 ## Basic Ideas
-- The __array__ axes meaning
+### The __array__ axes meaning
 
 In `numpy`, the axis (or axes) are defined as 
 ```
