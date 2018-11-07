@@ -6,3 +6,5 @@ This is a note collection for all problems I faced.
 - [Ubuntu(Linux) Notes](UbuntuNotes.md)
 - [Vim Notes](VimNotes.md)
 - [LaTex Notes](LaTexNotes.md)
+- [PythonNotes](PythonNote.md)
+- [GazeboNotes](GazeboNotes.md)
