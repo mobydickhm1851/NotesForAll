@@ -3,7 +3,7 @@
 ## Contents
 - [Trouble shooting](#trouble-shooting)
    - [Can't shutdown or reboot properly](#cant-shutdown-or-reboot-properly)
-   - [Can't suspend](#cant-suspend-xps-15)
+   - [Can't suspend (xps-15)](#cant-suspend-xps-15)
 - [Backup linux](#backup-linux)
    - [Generate the backup file](#generate-the-backup-file)
    - [Recover from the backup file](#recover-from-the-backup-file)
