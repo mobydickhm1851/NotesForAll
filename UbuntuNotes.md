@@ -2,8 +2,8 @@
 
 ## Contents
 - [Trouble shooting](#trouble-shooting)
-   - [Can't shutdown or reboot properly](#can't-shutdown-or-reboot-properly)
-   - [Can't suspend](#can't-suspend(xps-15))
+   - [Can't shutdown or reboot properly](#cant-shutdown-or-reboot-properly)
+   - [Can't suspend](#cant-suspend(xps-15))
 - [Backup linux](#backup-linux)
    - [Generate the backup file](#generate-the-backup-file)
    - [Recover from the backup file](#recover-from-the-backup-file)
@@ -15,7 +15,7 @@
    - [Yes to all during the installation](#yes-to-all-during-the-installation)
 - [Bluetooth device connection](#bluetooth-device-connection)
    - [Connect from `bluetoothctl`](#connect-from-`bluetoothctl`)
-   - [Logitech Anywhere 2S can't connect with bluetooth](#logitech-anywhere-2s-can't-connect-with-bluetooth)
+   - [Logitech Anywhere 2S can't connect with bluetooth](#logitech-anywhere-2s-cant-connect-with-bluetooth)
 - [SSH settings](#ssh-settings)
    - [ssh login without passwords](#ssh-login-without-passwords)
 
