@@ -45,6 +45,9 @@ For random samples from `N(mu, sigma^2)`, use:
 ```python
 sigma * np.random.randn(...) + mu
 ```
+
+__Sources__:[numpy.org][numpy], also see [Scipy.org][scipy] for all the `random` function.
+
 - Get keyboard input
 The following code get keyboard input and return a string :
 ```python
@@ -75,9 +78,15 @@ def getKey():
     termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
     return key
 ```
+__References__:[/[0/
+]][0][1][1][2][2]
+
+[0]:https://stackoverflow.com/questions/510357/python-read-a-single-character-from-the-user
+[1]:https://www.jianshu.com/p/b6b59ec1fa12
+[2]:https://hk.saowen.com/a/6daf2b56d2580ed55fbdc56afe4355c64e20bce1fde7d60259304220e751535b
 
 
-__Sources__:[numpy.org][numpy], also see [Scipy.org][scipy] for all the `random` function.
+
 
 [numpy]:https://www.numpy.org/devdocs/reference/generated/numpy.random.randn.html
 [scipy]:https://docs.scipy.org/doc/numpy-1.13.0/reference/routines.random.html
