@@ -45,6 +45,37 @@ For random samples from `N(mu, sigma^2)`, use:
 ```python
 sigma * np.random.randn(...) + mu
 ```
+- Get keyboard input
+The following code get keyboard input and return a string :
+```python
+def getKey():
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+        tty.setraw(sys.stdin.fileno())
+        key = sys.stdin.read(1)
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    return key
+```
+
+The system will be waiting for an input, so if we want the program keep running whether there is an input or not, modify it into this :
+
+```python
+def getKey():
+
+    tty.setraw(sys.stdin.fileno())
+    rlist, _, _ = select.select([sys.stdin], [], [], 0.1)
+    # The fellowing if keep system from waiting for input
+    if rlist:
+        key = sys.stdin.read(1)
+    else:
+        key = ''
+
+    termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+    return key
+```
+
 
 __Sources__:[numpy.org][numpy], also see [Scipy.org][scipy] for all the `random` function.
 
