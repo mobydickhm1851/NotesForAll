@@ -4,7 +4,7 @@
 - [Trouble shooting](#trouble-shooting)
    - [Can't shutdown or reboot properly](#cant-shutdown-or-reboot-properly)
    - [Can't suspend (xps-15)](#cant-suspend-xps-15)
-   - [DNS_PROBE_FINISH_BAD_CONFIG error on chrome](#dns-probe-finish-bad-config-error-on-chrome)
+   - [DNS_PROBE_FINISH_BAD_CONFIG error on chrome](#dns_probe_finish_bad_config-error-on-chrome)
 - [Backup linux](#backup-linux)
    - [Generate the backup file](#generate-the-backup-file)
    - [Recover from the backup file](#recover-from-the-backup-file)
