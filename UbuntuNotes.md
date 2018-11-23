@@ -4,6 +4,7 @@
 - [Trouble shooting](#trouble-shooting)
    - [Can't shutdown or reboot properly](#cant-shutdown-or-reboot-properly)
    - [Can't suspend (xps-15)](#cant-suspend-xps-15)
+   - [DNS_PROBE_FINISH_BAD_CONFIG error on chrome](#dns-probe-finish-bad-config-error-on-chrome)
 - [Backup linux](#backup-linux)
    - [Generate the backup file](#generate-the-backup-file)
    - [Recover from the backup file](#recover-from-the-backup-file)
@@ -21,8 +22,8 @@
 
 
 ## Trouble shooting
-      
-  ### Can't shutdown or reboot properly
+            
+### Can't shutdown or reboot properly
   - Ubuntu 16.04 hangs on shutdown/restart, requires pressing and holding the power key to turn the machine off.
    <br/> Try [this][5]:
      1. Go to `/etc/default/grub`
@@ -48,7 +49,7 @@
      
    This [__answer__][7] right here should help!
      
-  ### Can't suspend (XPS-15)
+### Can't suspend (XPS-15)
   After installing the NVIDIA driver, the shutdown and reboot problem were solved. But now the problem is unable to wake from suspend. The problem is the same as [__this discusss__][8] on NVIDIA webpage. The problem seems to be caused by Intel pci-bridge and there is no proper solution so far. <br/>
   <br/> However, the problem of unable to hibernate is solved on [__this post__] (this post doesn't solve the suspend though). So what I did is change all the suspend command into hibernate, like when closing the lid or inactivate for some time.Here is how to do it:
   <br/> Edit this file
@@ -62,13 +63,30 @@
   ```
    <br/> We can also use hybrid-sleep instead of hibernate. With faster waking time, the hybrid-sleep will consum more energy though.
   
-         
+### DNS_PROBE_FINISH_BAD_CONFIG error on chrome
+In my case, it only happens to certain wifi router. The connection go ons and offs for like a couple week, then it totally crashed and show `DNS_PROBE_FINISH_BAD_CONFIG` for some sites (facebook and outlook still work for some reason).
+The fix is just add `8.8.8.8` to your DNS setting:
+1. `sudo vim /etc/resolv.conf` for temporary setting or `sudo vim /etc/resolvconf/resolv.conf.d/head` to set permanently
+2. Then add these to line at the bottom of the file:
+   
+   ```
+   nameserver 8.8.8.8
+   nameserver 8.8.4.4
+   ```
+
+3. Restart the network-manager:
+   ```
+   sudo service network-manager restart
+   ```
+
+__Sources__:[stack overflow][sf]
+
          
  [6]:https://askubuntu.com/questions/882410/ubuntu-16-10-wont-shutdown
  [7]:https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-missing-firmware-warnings
  [8]:https://devtalk.nvidia.com/default/topic/1017185/linux/problem-with-resume-from-suspend-ubuntu-16-04-gt-940mx-/1
  [9]:https://devtalk.nvidia.com/default/topic/969433/-quot-solved-quot-suspend-resuming-and-wakeup-with-nvidia370-28/
-        
+ [sf]:https://stackoverflow.com/questions/32045682/dns-probe-finished-bad-config-error       
 
 ## Backup linux 
 ### Generate the backup file
