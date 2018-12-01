@@ -5,13 +5,15 @@
    - [Can't shutdown or reboot properly](#cant-shutdown-or-reboot-properly)
    - [Can't suspend (xps-15)](#cant-suspend-xps-15)
    - [DNS_PROBE_FINISH_BAD_CONFIG error on chrome](#dns_probe_finish_bad_config-error-on-chrome)
+- [System Installation](#system-installation)
+   - [RaspberryPi3 B Plus](#raspberrypi3-b-plus)
+   - [Dual system installation](#dual-system-installation)
 - [Backup linux](#backup-linux)
    - [Generate the backup file](#generate-the-backup-file)
    - [Recover from the backup file](#recover-from-the-backup-file)
    - [Using Cron Job to make backups automatically](#using-cron-job-to-make-backups-automatically)
    - [Upload to Google Drive](#upload-to-google-drive)
-- [Install bash](#install-bash)
-   - [Dual system installation](#dual-system-installation)
+- [Install bash](#install-bash)   
    - [Install install .sh files](#install-install-sh-files)
    - [Yes to all during the installation](#yes-to-all-during-the-installation)
 - [Bluetooth device connection](#bluetooth-device-connection)
@@ -20,7 +22,7 @@
 - [SSH settings](#ssh-settings)
    - [ssh login without passwords](#ssh-login-without-passwords)
 
-
+<!-- #####################################################################################-->
 ## Trouble shooting
             
 ### Can't shutdown or reboot properly
@@ -88,7 +90,67 @@ __Sources__:[stack overflow][sf]
  [9]:https://devtalk.nvidia.com/default/topic/969433/-quot-solved-quot-suspend-resuming-and-wakeup-with-nvidia370-28/
  [sf]:https://stackoverflow.com/questions/32045682/dns-probe-finished-bad-config-error       
 
+<!-- #####################################################################################-->
+## System Installation
+
+### RaspberryPi3 B Plus
+- __Problem Describtino__:<br/> After installing the Ubuntu Mate img file following the instruction of [Installing Operation System on Linux][rpi] from official Rpi website, nothing wrong happened. I insert the microSD to Raspberrypi 3b+ and power up, yet all what the screen show was __a picture of rainbow colour, nothing more__.
+ 
+- __Solution and Discussion__:<br/> So here is why this all happened. Most of the Rpi will install either __Rspbian__, which is provided by the Raspberry Pi Foundation as the primary operating system for Rpi, or __Ubuntu Mate__, another operating system with large community supporting it and do support computers with architectures aarch32(ARMv7) that rpi is using.
+<br/><br/>So far, there is actually nothing to complain about, but here comes the __ROS__, the culprit of all the mess. Only __Ubuntu Xenial__ with architecture armhf (i.e. ARMv7) is supported by __ROS Kinetic Kame__, the LTS ROS release with EOL on April, 2021 (the other LTS ROS release that support armhf is __ROS Melodic Morenia__ with EOL on May, 2023). Now since that, only __Ubuntu Mate__ is remained on the list. However, Ubuntu Mate only support Raspberry Pi 2 and Raspberry Pi 3 and __Raspberry Pi 3B+ is not supported__ . That's why the rainbow screen showed since the Ubuntu Xenial 16.04.2 I install doesn't support  __Raspberry Pi 3B+__. 
+
+| | Raspbian | Ubuntu Mate |
+| :-----: | :------: | :------: |
+|Raspberry Pi 2/3|O (Jessie & Stretch)|O (Ubuntu Xenial)|
+|Raspberry Pi 3B+|O (Stretch)|X|
+
+#### Now here is how to solve it (for now...).
+
+1. Install the Ubuntu Mate img (Xenial 16.04.2) on Rpi3 then swap to RPI3B+. (Haven't tried it yet, but a friend of mine succeeded,)
+2. Copy the following files from a microSD with __Raspbian (Stretch)__ installed to the main microSD with __Ubuntu Mate__ installed (Xenial 16.04.2).
+   - from __PI_BOOT__ :
+      - bootcode.bin, fixup.dat, start.elf, bcm2710-rpi-3-b-plus.dtb and kernel7.img 
+      > These are for booting
+      - fixup_x.dat and start_x.elf
+      > These are for camera
+   - from __PI_ROOT__ :
+      - /lib/modules/4.9.80-v7+ (in my case it's 4.9.79-v7+)
+      > This is for keyboard and mouse
+      - /lib/firmware/brcm
+      > This is for network
+      
+#### When the updates is done...
+The temporary solution we have now is not stable and is not carefully examined, so if there is a release of __Ubuntu Mate Bionic__ for Raspberry Pi 3B+, it will be a more robust operating system. (and the ROS release for Bionic is Melodic, not Kinetic)
+
+
+__Source:__ [Raspberry Pi forum][rpiforum] and [DROIDBOT 07][07]
+
+[rpi]:https://www.raspberrypi.org/documentation/installation/installing-images/linux.md
+[07]:https://droidbot07.blogspot.com/2018/10/ros-on-raspberry-pi-3b.html
+[rpiforum]:https://www.raspberrypi.org/forums/viewtopic.php?f=56&t=208538
+
+
+
+### Dual system installation
+- Win10/Ubunt16.04 Installation fail doing manual partition : can't find any disks
+  ```
+   1. Run Command Prompt as Admin
+   2. Invoke a Safe Mode boot with the command: bcdedit /set {current} safeboot minimal
+   3. Restart the PC and enter your BIOS during bootup.
+   4. Change from IDE to AHCI mode then Save & Exit.
+   5. Windows 10 will launch in Safe Mode.
+   6. Right click the Window icon and select to run the Command Prompt in Admin mode from among the various options.
+   7. Cancel Safe Mode booting with the command: bcdedit /deletevalue {current} safeboot
+   8. Restart your PC once more and this time it will boot up normally but with AHCI mode activated.
+   9. Bask in the reflected glory of being a total Windows 10 God 
+  ```
+source : see [this][3] and [this][4]
+  
+  
+  
+<!-- #####################################################################################-->
 ## Backup linux 
+
 ### Generate the backup file
 It's easy to do the backup on linux
   ```  
@@ -175,87 +237,77 @@ For more usage of `gdrive`, check [original github repo][gdrive_repo].
 [gdrive_repo]:https://github.com/prasmussen/gdrive
 [gdrive_dis]:https://github.com/prasmussen/gdrive/issues/151
 
+
+
+<!-- #####################################################################################-->
 ## Install bash
   
-  ### Dual system installation
-  - Win10/Ubunt16.04 Installation fail doing manual partition : can't find any disks
-  ```
-   1. Run Command Prompt as Admin
-   2. Invoke a Safe Mode boot with the command: bcdedit /set {current} safeboot minimal
-   3. Restart the PC and enter your BIOS during bootup.
-   4. Change from IDE to AHCI mode then Save & Exit.
-   5. Windows 10 will launch in Safe Mode.
-   6. Right click the Window icon and select to run the Command Prompt in Admin mode from among the various options.
-   7. Cancel Safe Mode booting with the command: bcdedit /deletevalue {current} safeboot
-   8. Restart your PC once more and this time it will boot up normally but with AHCI mode activated.
-   9. Bask in the reflected glory of being a total Windows 10 God 
-  ```
-  source : see [this][3] and [this][4]
-  
-  ### Install install .sh files
-  - Use `bash` command
+### Install install .sh files
+- Use `bash` command
   ```
   sudo bash install.sh
   ```
-  - Make the file executable
+- Make the file executable
   ```
   chmod +x install.sh
   sudo ./install.sh
   ```
   
-  ### Yes to all during the installation
+### Yes to all during the installation
   ```
   yes "yes" | script.sh
   ```
-  This can also work removing files or other command with Y/N
+This can also work removing files or other command with Y/N
   ```
   yes "yes" | rm -i file1 file2 file3
   ```
 
+<!-- #####################################################################################-->
 ## Bluetooth device connection
-  ### Connect from `bluetoothctl`
-  This is modified from [ArchWiki Bluetooth][1] and [ArchWiki Bluetooth Headset][2].
+
+### Connect from `bluetoothctl`
+This is modified from [ArchWiki Bluetooth][1] and [ArchWiki Bluetooth Headset][2].
   ```
   # bluetoothctl
   ```
-  After greeted by its internal command prompt, enter:
+After greeted by its internal command prompt, enter:
   ```
   # power on
   # agent on
   # default-agent
   # scan on
   ```
-  Make sure the device is in paring mode, it should be discovered shortly, for example:
+Make sure the device is in paring mode, it should be discovered shortly, for example:
   ```
   [NEW] Device 00:1D:43:6D:03:26 Name_Of_The_Divice
   ```
-  shows a device that calls itself "Lasmex LBT10" and has MAC address 00:1D:43:6D:03:26. We will now use that MAC address to initiate the pairing:
+shows a device that calls itself "Lasmex LBT10" and has MAC address 00:1D:43:6D:03:26. We will now use that MAC address to initiate the pairing:
   ```
   # pair 00:1D:43:6D:03:26
   ```
-  Some devices require passkey to pair, type the passkey on the device, for example:
+Some devices require passkey to pair, type the passkey on the device, for example:
   ```
   [agent] Confirm passkey 680044 (yes/no): yes
   ```
-  Just type `680044` and it will pair sucessfully.<br/>
-  After pairing, you also need to explicitly connect the device (every time?):
+Just type `680044` and it will pair sucessfully.<br/>
+After pairing, you also need to explicitly connect the device (every time?):
   ```
   # connect 00:1D:43:6D:03:26
   ```
-  > If everything works correctly, you now have a separate output device in PulseAudio. Note: The device may be off by default. Select its audio profile (OFF, A2DP, HFP) in the "Configuration" tab of pavucontrol.
+> If everything works correctly, you now have a separate output device in PulseAudio. Note: The device may be off by default. Select its audio profile (OFF, A2DP, HFP) in the "Configuration" tab of pavucontrol.
     You can now redirect any audio through that device using the "Playback" and "Recording" tabs of pavucontrol.
   
-  If you trust the device and want it to be connected automatically(whenever your device is on), open `/etc/bluetooth/main.conf` with vim, edit the following line:
+If you trust the device and want it to be connected automatically(whenever your device is on), open `/etc/bluetooth/main.conf` with vim, edit the following line:
   ```
   [Poicy]
   AutoEnable = true
   ```
-  Then go back to `bluetoothctl` enter this line:
+Then go back to `bluetoothctl` enter this line:
   ```
   trust 00:1D:43:6D:03:26
   ```
   
-  You can now disable scanning again and exit the program:
+You can now disable scanning again and exit the program:
   ```
   # scan off
   # exit
@@ -285,8 +337,11 @@ sudo systemctl start bluetooth
 [anywheresolver]:https://askubuntu.com/questions/741330/how-do-i-get-logitech-mx-anywhere-2-to-work-in-16-04-bluetooth-smart
 [bluetooth]:https://forums.bunsenlabs.org/viewtopic.php?id=4375
 
+
+<!-- #####################################################################################-->
 ## SSH settings
- ### ssh login without passwords
+
+### ssh login without passwords
  __On machine A:__ (client)
  <br\>Generate the rsa-key, for any pup-up question, just press `enter`
  ```
