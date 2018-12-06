@@ -25,6 +25,54 @@ __Sources__:[discussion in stackoverflow][stack] and the [image from this post][
 [stack]:https://stackoverflow.com/questions/17079279/how-is-axis-indexed-in-numpys-array
 [zihu]:https://zhuanlan.zhihu.com/p/30960190
 
+### Use array or matrix ?
+
+Use array.
+
+__Source__ : [Key Differences between array and matrix][np_arr_mat]
+
+### How to extend or knock out elements in an array ?
+
+Using `__numpy.append()__` function, for example
+
+#### extending
+
+```
+>>> import numpy as np
+>>> p = np.array([[1,2],[3,4]])
+
+>>> p = np.append(p, [[5,6]], 0)
+>>> p = np.append(p, [[7],[8],[9]],1)
+
+>>> p
+array([[1, 2, 7],
+   [3, 4, 8],
+   [5, 6, 9]])
+```
+ 
+#### knocking out
+
+```
+    p = np.array(range(20))
+>>> p.shape = (4,5)
+>>> p
+array([[ 0,  1,  2,  3,  4],
+       [ 5,  6,  7,  8,  9],
+       [10, 11, 12, 13, 14],
+       [15, 16, 17, 18, 19]])
+>>> n = 2
+>>> p = np.append(p[:n],p[n+1:],0)
+>>> p = np.append(p[...,:n],p[...,n+1:],1)
+>>> p
+array([[ 0,  1,  3,  4],
+       [ 5,  6,  8,  9],
+       [15, 16, 18, 19]])
+```
+__Sources__: [Stack Overflow answer][array_expend]
+
+[np_arr_mat]:https://docs.scipy.org/doc/numpy-1.14.0/user/numpy-for-matlab-users.html
+[array_expend]:https://stackoverflow.com/questions/877479/whats-the-simplest-way-to-extend-a-numpy-array-in-2-dimensions/877564#877564
+
 ## Useful Packages
 - Numpy: Python做多維陣列（矩陣）運算時的必備套件，比起Python內建的list，Numpy的array有極快的運算速度優勢
 - Pandas：有了Pandas可以讓Python很容易做到幾乎所有Excel的功能了，像是樞紐分析表、小記、欄位加總、篩選
