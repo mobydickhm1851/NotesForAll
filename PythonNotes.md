@@ -73,6 +73,20 @@ __Sources__: [Stack Overflow answer][array_expend]
 [np_arr_mat]:https://docs.scipy.org/doc/numpy-1.14.0/user/numpy-for-matlab-users.html
 [array_expend]:https://stackoverflow.com/questions/877479/whats-the-simplest-way-to-extend-a-numpy-array-in-2-dimensions/877564#877564
 
+
+### Usage at unzipping argument
+If you see the following Error message:
+```
+TypeError: argument after * must be a sequence
+```
+That means you need to add a ',' after the argument you pass. For example:<br/>
+Sending `arg = (s)` is trying to unpack a number of arguments instead of sending just that single arguement. 
+The correct way to pass the arg whould be `args=(s,)`.
+
+More information about this, [check this out][unzip]
+
+[unzip]:https://stackoverflow.com/questions/36387596/python-typeerror-argument-after-must-be-a-sequence
+
 ## Useful Packages
 - Numpy: Python做多維陣列（矩陣）運算時的必備套件，比起Python內建的list，Numpy的array有極快的運算速度優勢
 - Pandas：有了Pandas可以讓Python很容易做到幾乎所有Excel的功能了，像是樞紐分析表、小記、欄位加總、篩選
