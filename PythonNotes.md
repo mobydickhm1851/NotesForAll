@@ -9,6 +9,47 @@
 
    
 ## Basic Ideas
+
+### Everything is an object in Python !!!
+
+See the following examples:
+```python
+y = [1,2,3]
+
+def plusOne(y):
+    for x in range(len(y)):
+        y[x] += 1
+    return y
+
+print plusOne(y), y
+
+
+a = 2
+
+def plusOne2(a):
+    a += 1
+    return a
+
+print plusOne2(a), a
+```
+<br/>
+
+Values in `list y` will be changed, while tje value of a won't.
+
+<br/>
+
+Brief explanation can be as this:
+
+<br/>
+
+In Python, all values are __objects__, assignment change the object that the variable __points to__. In other words, there isn't really Variables in Python, instead, they are just __names__, and the `=` operation doesn't assign a value to the variables, it binds (points) a name to an object!
+
+refer:[discussion on stack overflow][sf_name]
+
+[sf_name]:https://stackoverflow.com/questions/17686596/function-changes-list-values-and-not-variable-values-in-python
+
+
+
 ### The __array__ axes meaning
 
 In `numpy`, the axis (or axes) are defined as 
@@ -20,7 +61,7 @@ For example, `Axis = 0` is the first dimension (the rows) of the array and `Axis
 When using `numpy.sum()`, here is the quick result of the 
 ![array axes explanation](https://github.com/mobydickhm1851/NotesForAll/blob/master/numpy_array.jpg?raw=true)
 
-__Sources__:[discussion in stackoverflow][stack] and the [image from this post][zihu].
+Sources:[discussion in stackoverflow][stack] and the [image from this post][zihu].
 
 [stack]:https://stackoverflow.com/questions/17079279/how-is-axis-indexed-in-numpys-array
 [zihu]:https://zhuanlan.zhihu.com/p/30960190
@@ -29,7 +70,7 @@ __Sources__:[discussion in stackoverflow][stack] and the [image from this post][
 
 Use array.
 
-__Source__ : [Key Differences between array and matrix][np_arr_mat]
+Source : [Key Differences between array and matrix][np_arr_mat]
 
 ### How to extend or knock out elements in an array ?
 
@@ -68,7 +109,7 @@ array([[ 0,  1,  3,  4],
        [ 5,  6,  8,  9],
        [15, 16, 18, 19]])
 ```
-__Sources__: [Stack Overflow answer][array_expend]
+Sources: [Stack Overflow answer][array_expend]
 
 [np_arr_mat]:https://docs.scipy.org/doc/numpy-1.14.0/user/numpy-for-matlab-users.html
 [array_expend]:https://stackoverflow.com/questions/877479/whats-the-simplest-way-to-extend-a-numpy-array-in-2-dimensions/877564#877564
@@ -94,7 +135,7 @@ More information about this, [check this out][unzip]
 - Seaborn：另一個知名的視覺化工具，個人認為畫起來比matplotlib好看
 - SciKit-Learn: Python 關於機器學習的model基本上都在這個套件，像是SVM, Random Forest…
 
-__Source__:[Teh James Medium][1]
+Source:[Teh James Medium][1]
 
 [1]:https://medium.com/@yehjames/%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92-%E7%AC%AC%E4%B8%80%E8%AC%9B-python%E6%87%B6%E4%BA%BA%E5%8C%85-anaconda-%E4%BB%8B%E7%B4%B9-%E5%AE%89%E8%A3%9D-f8199fd4be8c
 
@@ -140,8 +181,7 @@ def getKey():
     termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
     return key
 ```
-__References__:[/[0/
-]][0][1][1][2][2]
+References:[0][0][1][1][2][2]
 
 [0]:https://stackoverflow.com/questions/510357/python-read-a-single-character-from-the-user
 [1]:https://www.jianshu.com/p/b6b59ec1fa12
@@ -185,7 +225,7 @@ def long_words(lst):
 - `Dictionary Comprehension`
 - `Set Comprehension`
 
-__Source__:[Python single line for loop][lc]
+Source:[Python single line for loop][lc]
 
 [lc]:https://blog.teamtreehouse.com/python-single-line-loops
 
