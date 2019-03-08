@@ -1,5 +1,5 @@
 # Vim Notes
-## Copy and past across terminals
+## Copy and past across terminals (__also work from vim to external programs!__)
    1. first check if clipboard function is available (echo in vim)
       ```
       :echo has('clipboard')
@@ -38,3 +38,47 @@
 >i{  Increase inner block indent
 <i{  Decrease inner block indent
 ```
+
+## Cstimized config (LiuYC)
+
+```
+set laststatus=2
+set t_Co=256
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+set clipboard^=unnamed
+
+
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+
+"set background=dark
+colorscheme Tomorrow-Night-Eighties
+set mouse=a
+set showmatch " show the matching part of the pair for [] {} and ()
+set autochdir " set working directory same with current editing file
+set history=1024
+set nu 
+
+set timeoutlen=1000
+set ttimeoutlen=000
+
+
+
+nnoremap <F3> a<C-R>=strftime("%Y-%m-%d %I:%M:%S")<CR><Esc>
+hi CursorLine   cterm=NONE ctermbg=grey ctermfg=black guibg=darkred guifg=white
+set cursorline
+
+```
+
+Sources: [pepelepew][pepe] and [John Hawthorn][JH]
+
+[pepe]:
+[JH]:https://www.johnhawthorn.com/2012/09/vi-escape-delays/
+
