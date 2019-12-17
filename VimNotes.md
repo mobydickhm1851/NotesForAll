@@ -77,8 +77,9 @@ set cursorline
 
 ```
 
-Sources: [pepelepew][pepe] and [John Hawthorn][JH]
+Sources: [pepelepew][pepe] and [John Hawthorn][JH] 
+(color theme : [Tomorrow-Night-Eighties][Tomorrow], put this file in ~/.vim/colors)
 
-[pepe]:
+[pepe]:https://github.com/pepelepew71
 [JH]:https://www.johnhawthorn.com/2012/09/vi-escape-delays/
-
+[Tomorrow]:https://github.com/chriskempson/vim-tomorrow-theme/blob/master/colors/Tomorrow-Night-Eighties.vim
