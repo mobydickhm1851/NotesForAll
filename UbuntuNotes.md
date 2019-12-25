@@ -367,6 +367,9 @@ sudo systemctl start bluetooth
  ```
  to get more info, check out [this][ssh_1] and [this][ssh_2]
   
+ ### ssh machines under different network : Forwarding ports on routers
+ Here is the [askubuntu thread][ask:ssh] and here is a very [detailed instruction][htg:ssh].
+  
   
   [1]:https://wiki.archlinux.org/index.php/bluetooth
   [2]:https://wiki.archlinux.org/index.php/Bluetooth_headset
@@ -375,4 +378,5 @@ sudo systemctl start bluetooth
   [ssh_2]:https://blog.longwin.com.tw/2005/12/ssh_keygen_no_passwd/
   [4]:https://askubuntu.com/questions/696413/ubuntu-installer-cant-find-any-disk-on-dell-xps-13-9350
   [5]:https://askubuntu.com/questions/764568/ubuntu-16-04-hangs-on-shutdown-restart
-  
+  [ask:ssh]:https://askubuntu.com/questions/749230/is-it-possible-to-ssh-between-two-different-network
+  [htg:ssh]:https://www.howtogeek.com/66214/how-to-forward-ports-on-your-router/
