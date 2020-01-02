@@ -1,5 +1,26 @@
 # Vim Notes
-## Copy and past across terminals (__also work from vim to external programs!__)
+## Function Settings
+### Paste code without auto-indent
+When pasting a page of codes into vim, auto-indent would be added and becoming a mess:
+```
+code line1
+   code line2
+      code line3
+         ...
+```
+To solve this, we have to initiate insert-paste mode:
+1. Do this one-time in vim:
+   - type `:set paste` to enter the insert-paste mode
+   - press `p` to paste the code you just copied
+   - type `:set nopaste` to exit the insert-paste mode
+   
+2. add this line into `.vimrc` permanently, and use shortcut `Ctrl + p`
+   ```
+   " Set Ctrl + p as shortcut into insert-paste mode
+   set pastetoggle = <C-p>
+   ```
+   
+### Copy and past across terminals (__also work from vim to external programs!__)
    1. first check if clipboard function is available (echo in vim)
       ```
       :echo has('clipboard')
@@ -17,7 +38,11 @@
         set clipboard^=unnamed
         ```
 ## Cheat Sheets
-
+#### Delete till some word
+```
+d/<string-to-delete>
+# add \ if / is included in the <string-to-delete>
+```
 #### Indent
 
 ```
