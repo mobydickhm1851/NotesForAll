@@ -11,6 +11,17 @@
 [gccFix]:https://askubuntu.com/questions/26498/how-to-choose-the-default-gcc-and-g-version
 [solQT]:https://github.com/ros-visualization/python_qt_binding/pull/59
 
+## Installing some packages
+
+### aruco_detect
+#### Problems
+1. **tf2_geometry_msgs** not installed </br>
+  Go to [github page of tf2_geometry_msgs][github_tf2]
+
+2. while installing **tf2_geometry_msgs**, **bullet package is not found** while installing `tf2_bullet`  </br>
+  `sudo apt install libbullet-dev`
+
+[github_tf2]:https://github.com/ros/geometry2.gitf2t
 
 
 
