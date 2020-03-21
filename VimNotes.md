@@ -100,6 +100,8 @@ nnoremap <F3> a<C-R>=strftime("%Y-%m-%d %I:%M:%S")<CR><Esc>
 hi CursorLine   cterm=NONE ctermbg=grey ctermfg=black guibg=darkred guifg=white
 set cursorline
 
+" Set Ctrl + p as shortcut into insert-paste mode
+set pastetoggle = <C-p>
 ```
 
 Sources: [pepelepew][pepe] and [John Hawthorn][JH] 
