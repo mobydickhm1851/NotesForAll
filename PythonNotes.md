@@ -6,6 +6,7 @@
 - [Useful Functions](#useful-functions)
 - [Tricks](#tricks)
 - [Questions and Exercises](#questions-and-exercises)
+- [Pyplot](#pyplot)
 
    
 ## Basic Ideas
@@ -235,3 +236,36 @@ Source:[Python single line for loop][lc]
 - [50+ Data Structure and Algorithms Interview Questions for Programmers][50+]
 
 [50+]:https://hackernoon.com/50-data-structure-and-algorithms-interview-questions-for-programmers-b4b1ac61f5b0
+
+
+## Pyplot
+### Adding chinese font
+
+1. First you'll have to find the `.ttf` file of the font. (If you can only find `.ttc` file, which is a collection of fonts, use [Transfonter](https://transfonter.org/ttc-unpack) to unpack `.ttc` files.)
+
+2. Locate the folder to add `.ttf` into :
+   ```python
+   import matplotlib
+   print(matplotlib.matplotlib_fname())
+   ```
+   which should be `~/.local/lib/pythonx.x/site-packages/matplotlib/mpl-data/matplotlibrc`, and the font folder will be at `~/.local/lib/pythonx.x/site-packages/matplotlib/mpl-data/fonts/ttf`
+
+3. Add the `.ttf` into it and rebuild the catche
+   ```python
+   import matplotlib.font_manager
+   matplotlib.font_manager._rebuild()
+   ```
+
+4. Find the font name we're going to add into the python script:
+   ```python
+   >> [f for f in matplotlib.font_manager.fontManager.ttflist if 'XYZ' in f.name]
+   ```
+   where `XYZ` should be the keyword of the font to be added.
+
+5. Let's say the font name found in `fontManager` is `XYZ TW`, then in the python script:
+   ```
+   from matplotlib import rcParams
+   rcParams['font.family'] = ['XYZ TW']
+   ```
+
+Source:[Kelvin Ng](https://medium.com/@hoishing), [StackOverFlow](https://stackoverflow.com/questions/21321670/how-to-change-fonts-in-matplotlib-python)
