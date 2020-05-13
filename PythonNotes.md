@@ -269,3 +269,22 @@ Source:[Python single line for loop][lc]
    ```
 
 Source:[Kelvin Ng](https://medium.com/@hoishing), [StackOverFlow](https://stackoverflow.com/questions/21321670/how-to-change-fonts-in-matplotlib-python)
+
+### Plot or savefig error message
+Under Ubuntu 18.04 and python 3.6, the error message is encountered when using `matplotlib.pyplot.show()` or `matplotlib.pyplot.savefig()`:
+
+```
+matplotlib/backends/backend_gtk3.py:215: Warning: Source ID 7 was not found when attempting to remove it GLib.source_remove(self._idle_event_id)
+```
+
+#### Fix for me (but might encounter error in the future...)
+Go to `~/.local/lib/python3.6/site-packages/matplotlib/backends/backend_gtk3.py` and edit as following:
+```diff
+def destroy(self):
+    #Gtk.DrawingArea.destroy(self)
+    self.close_event()
+-   if self._idle_draw_id != 0:
+-      GLib.source_remove(self._idle_draw_id)
+```
+
+For more information, check this [thread in StackOverFlow](https://stackoverflow.com/questions/29540845/how-can-i-deactivate-warning-source-id-510-was-not-found-when-attempting-to-re)
