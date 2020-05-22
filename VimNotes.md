@@ -102,6 +102,11 @@ set cursorline
 
 " Set Ctrl + p as shortcut into insert-paste mode
 set pastetoggle = <C-p>
+
+" comment shortcut for python, # for comment, -# for un-comment
+vnoremap <silent> # :s/^/#/<cr>:noh<cr>
+vnoremap <silent> -# :s/^#//<cr>:noh<cr>
+
 ```
 
 Sources: [pepelepew][pepe] and [John Hawthorn][JH] 
